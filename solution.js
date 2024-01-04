@@ -1,19 +1,19 @@
 const { nums, words } = require("./data/data.js");
 
-/*- Create a Node class with properties
+/*- Create a Node class with properties ✅
   - data
   - next
-- Create a linked list with properties
+- Create a linked list with properties ✅
   - head
 - Linked List Methods
   - `insert`✅
   - `size`✅
   - `delete` by key✅
-  - `getFirst` element
-  - `getLast` element
-  - `search` an element by key and return data
-  - `getKth` retrieve kth element
-  - `getKthToLast` retrieve kth from last element
+  - `getFirst` element ✅
+  - `getLast` element✅
+  - `search` an element by key and return data ✅
+  - `getKth` retrieve kth element ✅
+  - `getKthToLast` retrieve kth from last element ✅
   - `isEmpty` check if list is empty ✅
   - `clear` the linked list ✅
   - `toArray`convert data from linked list to an array ✅
@@ -117,7 +117,7 @@ class LinkedList {
       return null;
     }
       
-  //- `getKth` retrieve kth element
+  //
   getKth(k){
     if( k > this.size()) return null;
     let count = 1;
@@ -147,7 +147,13 @@ class LinkedList {
     }
     return arr
   }
-
+  //- - `getKthToLast` retrieve kth from last element
+  getKthToLast(k){
+    if( k > this.size() ) return null;
+    let kLength = Math.floor(this.size() - k);
+    console.log(kLength )
+    return this.getKth(kLength)
+  }
 }
 
 const list = new LinkedList();
