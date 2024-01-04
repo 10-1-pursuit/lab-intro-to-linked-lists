@@ -6,17 +6,17 @@ const { nums, words } = require("./data/data.js");
 - Create a linked list with properties
   - head
 - Linked List Methods
-  - `insert`
-  - `size`
-  - `delete` by key
+  - `insert`✅
+  - `size`✅
+  - `delete` by key✅
   - `getFirst` element
   - `getLast` element
   - `search` an element by key and return data
   - `getKth` retrieve kth element
   - `getKthToLast` retrieve kth from last element
-  - `isEmpty` check if list is empty
-  - `clear` the linked list
-  - `toArray`convert data from linked list to an array
+  - `isEmpty` check if list is empty ✅
+  - `clear` the linked list ✅
+  - `toArray`convert data from linked list to an array ✅
   - `containsDuplicates` check for duplicates - return true if contains duplicates, false if not
   */
 
@@ -35,22 +35,27 @@ class LinkedList {
   }
   //- Linked List Methods
   //- `insert`
-  insert(data) {
+
+  // insert(data) {
+  //   const newNode = new Node(data);
+  //   if (!this.head) {
+  //     this.head = newNode;
+  //   } else if (this.head.next) {
+  //     let current = this.head;
+
+  //     while (current.next) {
+  //       current = current.next;
+  //     }
+  //     current.next = newNode;
+  //   } else {
+  //     this.head.next = newNode;
+  //   }
+  // }
+  insert(data){
+    let current = this.head
     const newNode = new Node(data);
-    if (!this.head) {
-      this.head = newNode;
-
-    } else if (this.head.next) {
-      let current = this.head
-
-      while (current.next) {
-        current = current.next;    
-      }
-      current.next = newNode
-
-    } else {
-      this.head.next = newNode;
-    }
+    newNode.next = current
+    this.head = newNode
   }
   //- `size`
   size() {
@@ -63,40 +68,92 @@ class LinkedList {
     return count;
   }
   //- delete
-  delete(target){
+  delete(target) {
     let current = this.head; //locate the begining of the list
 
-    if(current.data === target){  //if the begining of the list is the target
-      this.head = current.next  //the head becomes the next target; deleting the target
-     
-    } else if (current.next.data === target){  //if the next is the target
-      current.next = current.next.next   // the next becomes the one AFTER the target. deleting the target
-
-    } else{
-      while(current){
-        if(current.next?.data === target){ //optional chaining 
-          current.next = current.next.next
+    if (current.data === target) {
+      //if the begining of the list is the target
+      this.head = current.next; //the head becomes the next target; deleting the target
+    } else if (current.next.data === target) {
+      //if the next is the target
+      current.next = current.next.next; // the next becomes the one AFTER the target. deleting the target
+    } else {
+      while (current) {
+        if (current.next?.data === target) {
+          //optional chaining
+          current.next = current.next.next;
         }
-        current = current.next
+        current = current.next;
       }
-
     }
-  
   }
-
+  // `getFirst` element
+  getFirst() {
+    return this.head;
+  }
+  //- `getLast` element
+  getLast() {
+    let current = this.head;
+    if (!current.next) {
+      return current;
+    } else {
+      while (current.next) {
+        current = current.next;
+      }
+      return current;
+    }
+  }
+  //- `search` an element by key and return data
+  search(target) {
+   
+    let current = this.head;
+    while(current){
+  
+      if (current.data === target) {
+        return current;
+      }
+        current = current.next;
+      }
+      return null;
+    }
+      
+  //- `getKth` retrieve kth element
+  getKth(k){
+    if( k > this.size()) return null;
+    let count = 1;
+    let current = this.head
+    while(count !== k){
+      count++;
+      current = current.next
+    }
+    return current;
+  }
+ //`isEmpty` check if list is empty
+  isEmpty(){
+    return this.head === null
+  }
+  //  - `clear` the linked list
+  clear(){
+    this.head = null
+  }
+  //- `toArray`convert data from linked list to an array
+  toArray(){
+    let current = this.head;
+    if(!current) return []
+    const arr = []
+    while(current){
+      arr.push(current.data);
+      current = current.next
+    }
+    return arr
+  }
 
 }
 
-
-const list = new LinkedList()
-list.insert(4)
-list.insert(7)
-list.insert(3)
-
-console.log(list.delete(3))
-console.log(list)
-
-
+const list = new LinkedList();
+list.insert(4);
+list.insert(7);
+list.insert(3);
 
 
 module.exports = {
