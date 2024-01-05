@@ -58,6 +58,23 @@ class LinkedList {
     newNode.next = current
     this.head = newNode
   }
+  insert2(data){
+    const newNode = new Node(data)
+    if(!this.head){
+      this.head = newNode
+      //when list is empty the head and tail are both the same node
+      this.tail = newNode
+    } else {
+      let current = this.head;
+      while (current.next){
+        current = current.next;
+      }
+       current.next = newNode;
+       newNode.prev = current
+       this.tail = newNode
+    }
+  }
+
   //- `size`
   size() {
     let count = 0;
@@ -157,19 +174,18 @@ class LinkedList {
   containsDuplicates(){
     const arr = this.toArray()
     const set = new Set(arr)
-    console.log(set.size, set, arr.length)
     return set.size !== arr.length
   }
 
 }
 
 const list = new LinkedList();
-list.insert(4);
-list.insert(7);
-list.insert(3);
-list.insert(3);
+list.insert2(4);
+list.insert2(7);
+list.insert2(3);
+list.insert2(3);
 
-console.log(list.containsDuplicates())
+console.log(list)
 
 
 module.exports = {
