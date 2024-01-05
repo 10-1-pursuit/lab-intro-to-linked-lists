@@ -155,19 +155,10 @@ class LinkedList {
   }
   //containsDuplicates` check for duplicates - return true if contains duplicates, false if not
   containsDuplicates(){
-    if(this.size <= 1) return false;
-    
-    let prevNode = this.head;
-    let currentNode = this.head?.next
-
-    while(currentNode){
-      if(prevNode === currentNode){
-        return true
-      }else{
-        prevNode = currentNode
-      }
-    }
-    return false;
+    const arr = this.toArray()
+    const set = new Set(arr)
+    console.log(set.size, set, arr.length)
+    return set.size !== arr.length
   }
 
 }
