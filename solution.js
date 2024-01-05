@@ -32,6 +32,7 @@ class Node {
 class LinkedList {
   constructor(head = null) {
     this.head = head;
+    this.tail = null;
   }
   //- Linked List Methods
   //- `insert`
@@ -115,8 +116,7 @@ class LinkedList {
         current = current.next;
       }
       return null;
-    }
-      
+  }
   //
   getKth(k){
     if( k > this.size()) return null;
@@ -151,15 +151,34 @@ class LinkedList {
   getKthToLast(k){
     if( k > this.size() ) return null;
     let kLength = Math.floor(this.size() - k);
-    console.log(kLength )
     return this.getKth(kLength)
   }
+  //containsDuplicates` check for duplicates - return true if contains duplicates, false if not
+  containsDuplicates(){
+    if(this.size <= 1) return false;
+    
+    let prevNode = this.head;
+    let currentNode = this.head?.next
+
+    while(currentNode){
+      if(prevNode === currentNode){
+        return true
+      }else{
+        prevNode = currentNode
+      }
+    }
+    return false;
+  }
+
 }
 
 const list = new LinkedList();
 list.insert(4);
 list.insert(7);
 list.insert(3);
+list.insert(3);
+
+console.log(list.containsDuplicates())
 
 
 module.exports = {
