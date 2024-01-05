@@ -12,17 +12,19 @@ class LinkedList {
     this.head = head;
   }
 
-  insert(data) {
-    const newNode = new Node(data);
+  insert(info) {
+    const newNode = new Node(info);
     if (!this.head) {
       this.head = newNode;
     } else {
-      let currentNode = this.head;
+        newNode.next = this.head;
+        this.head = newNode
+      // let currentNode = this.head;
 
-      while (currentNode.next) {
-        currentNode = currentNode.next;
-      }
-      currentNode.next = newNode;
+      // while (currentNode.next) {
+      //   currentNode = currentNode.next;
+      // }
+      // currentNode.next = newNode;
     }
   }
 
@@ -40,11 +42,11 @@ class LinkedList {
     this.head = null;
   }
 
-  getLast() {
+  getFirst() {
     return this.head;
   }
 
-  getFirst() {
+  getLast() {
     let currentNode = this.head;
     if (!currentNode.next) {
       return currentNode;
@@ -55,8 +57,10 @@ class LinkedList {
       return currentNode;
     }
   }
+
   getKth(k) {
     if (k > this.size()) return null;
+
     let counter = 1;
     let currentNode = this.head;
 
@@ -67,11 +71,11 @@ class LinkedList {
     return currentNode;
   }
 
-  search(word) {
+  search(info) {
     let currentNode = this.head;
 
     while (currentNode) {
-      if (word === currentNode.data) {
+      if (info === currentNode.data) {
         return currentNode;
       } else {
         currentNode = currentNode.next;
@@ -87,13 +91,54 @@ class LinkedList {
   toArray() {
     let value = [];
     let currentNode = this.head;
-
     while (currentNode) {
       value.push(currentNode.data);
       currentNode = currentNode.next;
     }
     return value;
   }
+
+  delete(info) {
+    let currentNode = this.head;
+
+    if (currentNode.data === info) {
+      this.head = currentNode.next;
+    } else if (currentNode.next.data === info) {
+      currentNode.next = currentNode.next.next;
+    }
+    while (currentNode) {
+      if (currentNode.next?.data === info) {
+        currentNode.next = currentNode.next.next;
+      }
+      currentNode = currentNode.next;
+    }
+  }
+
+  containsDuplicates() {
+    let arr = this.toArray();
+    let obj = {};
+    for (let a of arr) {
+      if (a in obj) {
+        obj[a] += 1;
+        return true
+      } else {
+        obj[a] = 1;
+      }
+    }
+return false
+  }
+
+getKthToLast(num){
+  let arr = this.toArray();
+  if(arr.length < num) return null
+
+  let ind = arr.length-num
+  let found = this.getKth(ind);
+    return found
+  }
+
+
+  
 }
 
 let list = new LinkedList();
@@ -115,8 +160,8 @@ for (let num of nums) {
   list2.insert(num);
 }
 
-// console.log(list)
-console.log(list2.getKth(4));
+console.log(list.toArray())
+// console.log(list2.containsDuplicates());
 
 module.exports = {
   Node,
