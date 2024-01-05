@@ -8,7 +8,13 @@ class Node {
   
 }
 
+const firstNode = new Node(3)
+const secondNode = new Node(6)
+const thirdNode = new Node(9)
+
+console.log(firstNode)
+
 module.exports = {
   Node,
-  LinkedList,
+  // LinkedList,
 };
