@@ -210,4 +210,5 @@ const list = new LinkedList();
 list.insert2(1);
 list.insert2(2);
 list.insert2(3);
+list.insert2(4)
 console.log(list);

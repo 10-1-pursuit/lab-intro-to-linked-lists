@@ -74,7 +74,6 @@ class LinkedList {
        this.tail = newNode
     }
   }
-
   //- `size`
   size() {
     let count = 0;
