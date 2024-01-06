@@ -11,8 +11,9 @@ const { nums, words } = require("./data/data.js");
   "dog",
 
   class Node {
-    constructor(data) {
-      this.data = data;
+    constructor(num, word) {
+      this.num = num;
+      this.word = word;
       this.next = null;
     }
   }
@@ -36,6 +37,8 @@ const node9 = new Node(9);
 const nodeWord8 = new Node("lazy");
 const node0 = new Node(0);
 const nodeWord9 = new Node("dog");
+
+console.log(node1)
 
 // //Linking the nodes the annoying way
 // node1.next = node2
@@ -74,8 +77,8 @@ class LinkedList {
 
 //New list
 
-const newList = new LinkedList() {
-  newList.insert(node1)
+const newList = new LinkedList()
+newList.insert(node1)
 newList.insert(node2)
 newList.insert(nodeWord1)
 newList.insert(node3)
@@ -94,8 +97,8 @@ newList.insert(node8)
 newList.insert(nodeWord9)
 newList.insert(node9)
 newList.insert(node0)
-}
 
+console.log(newList)
 
 module.exports = {
   Node,
