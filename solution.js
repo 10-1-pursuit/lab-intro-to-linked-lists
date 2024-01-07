@@ -4,17 +4,27 @@ class Node {
   constructor(data) {
     this.data = data
     this.next = null
+    this.prev = null
   }
 }
 
 class LinkedList {
   constructor(head = null) {
     this.head = head
+    this.tail = null
   }
   insert(data) {
     const newNode = new Node(data)
-    newNode.next = this.head
-    this.head = newNode
+    if(!this.head){
+      this.head = newNode
+      this.tail = newNode
+    } else {
+      newNode.next = this.head
+      this.head.prev = newNode
+      this.head = newNode
+    }
+    // newNode.next = this.head
+    // this.head = newNode
   }
   size() {
     let count = 0
@@ -27,18 +37,22 @@ class LinkedList {
   }
   delete(key) {
     let current = this.head
-    let prev = null
+    // let prev = null
 
-    while (current !== null) {
+    while (current) {
       if (current.data === key) {
-        if (prev === null) {
-          this.head = current.next
+        if (current.prev) {
+          current.prev.next = current.next
         } else {
-          prev.next = current.next
+          this.head = current.next
+        } 
+        if(current.next){
+          current.next.prev = current.prev
+        } else {
+          this.tail = current.prev
         }
         return
       }
-      prev = current
       current = current.next
     }
   }
