@@ -85,7 +85,33 @@ class LinkedList {
   clear() {
     this.head = null
   }
+  delete(dataProp) {
+    let currentNode = this.head
+    if (currentNode.data === dataProp) {
+      this.head = currentNode.next
 
+    } else if (currentNode.next.data === dataProp) {
+      currentNode.next = currentNode.next.next
+    }
+    while (currentNode) {
+      if (currentNode.next?.data === dataProp) {
+
+        currentNode.next = currentNode.next.next
+      }
+      currentNode = currentNode.next
+    }
+  }
+
+  getFirst() {
+    return this.head
+  }
+  getLast() {
+    let currentNode = this.head
+    while (currentNode?.next) {
+      currentNode = currentNode.next
+    }
+    return currentNode
+  }
 
 }
 
