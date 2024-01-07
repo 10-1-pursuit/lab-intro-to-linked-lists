@@ -82,6 +82,11 @@ class LinkedList {
     }
     return count
   }
+  clear() {
+    this.head = null
+  }
+
+
 }
 
 
