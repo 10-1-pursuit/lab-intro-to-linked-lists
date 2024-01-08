@@ -12,6 +12,7 @@ class LinkedList {
   constructor(head = null){
     this.head = head
   }
+
   insert(word) {
     let newWord = new Node(word);
     if (!this.head) {
@@ -21,6 +22,7 @@ class LinkedList {
       this.head = newWord;
     }
   }
+
   size() {
     let count = 0;
     let currentNum = this.head;
@@ -30,6 +32,7 @@ class LinkedList {
     }
     return count;
   }
+
   delete(data) {
     let newWord = this.head;
     let counter = 0;
@@ -44,10 +47,99 @@ class LinkedList {
     }
     newWord.next = foundWord.next;
   }
+
   clear() {
     this.head = null;
   }
+
+  getFirst() {
+    return this.head;
+  }
+
+  search(key) {
+    let currentNum = this.head;
+    while (currentNum !== null && currentNum.data !== key) {
+      currentNum = currentNum.next;
+    }
+    return currentNum;
+  }
+
+  getLast() {
+    let currentNum = this.head;
+    if (!this.head) return null;
+    while (currentNum.next) {
+    currentNum = currentNum.next;
+    }
+    return currentNum;
+  }
+
+  isEmpty(){
+    return !this.head
+  }
+
+  getKth(k){
+    if(k > this.size())return null
+
+    let counter = 1
+
+    let currentNum = this.head
+
+    while(k !== counter) {
+      counter++
+
+      currentNum = currentNum.next
+    }
+    return currentNum
+  }
+
+  toArray() {
+    const result = [];//empty array, where the data from each node will be stored.
+    let current = this.head;
   
+    while (current) {
+      result.push(current.data);//It pushes the data of the current node (current.data) into the dataArray.
+      current = current.next;
+    }
+  
+    return result;
+  }
+
+  containsDuplicates() {
+    const seenValues = new Set(); //store the values encountered while traversing the linked list.
+    let current = this.head;
+  
+    while (current !== null) {
+      if (seenValues.has(current.data)) {
+        //It checks if the seenValues set already contains the data of the current node.
+        return true; // Found a duplicate
+      }
+      seenValues.add(current.data);
+      //if the data of the current node is not in the seenValues set, it adds that data to the set to mark it as seen.
+      current = current.next;
+    }
+  
+    return false; // No duplicates found
+  }
+
+
+  getKthToLast(k) {
+    if (k > this.size()) return null;
+
+    let prevNum = this.head;
+    let currentNum = this.head;
+
+    for (let i = 0; i < k; i++) {
+      prevNum = prevNum.next;
+    }
+
+    while (prevNum && prevNum.next) {
+      prevNum = prevNum.next;
+      currentNum = currentNum.next;
+    }
+
+    return currentNum;
+  }
+
 }
 
 const list = new LinkedList()
