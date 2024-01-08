@@ -11,9 +11,8 @@ class Node{
 }
 
 class LinkedList{
-  constructor(head=null,tail=null,length=0){
+  constructor(head=null,length=0){
     this.head=head
-    this.tail=tail
     this.length=length
   }
   
@@ -29,6 +28,7 @@ insert(node) {
     }
     this.length += 1;
   }
+  
 
   size(){
     let currentNode=this.head
@@ -99,33 +99,60 @@ insert(node) {
 
  }
  getKthToLast(k){
-  if(k>this.size()) return null
   return this.getKth((this.size()-k))
  }
-//  isEmpty(){
-//   return !this.head
-// }
- 
-
-  
-  
-  
- 
-  
+ isEmpty(){
+  return !this.head
 }
+toArray(){
+  let arr = []
+  var current = this.head;
+      
+  while(current){
+    arr.push(current.data);
+    current = current.next;
+  }
+      
+  return arr;
+};
+ 
 
+containsDuplicates(dataProp) {
+  let currentNode = this.head
 
+  while (currentNode) {
+    let prevNode = currentNode.next
+
+    while (prevNode) {
+      if (currentNode.data === prevNode.data ||currentNode.data&&prevNode.data===dataProp) {
+        return true
+      }
+      prevNode = prevNode.next
+    }
+    currentNode = currentNode.next
+  }
+  return false
+}
+}
+let tempNumList = new LinkedList();
+    for (let num of nums) {
+      tempNumList.insert(num);
+    }
+    console.log(tempNumList)
     
 const myList= new LinkedList()
 const node1=new Node(100)
 const node2=new Node(200)
 const node3=new Node(300)
+const node4=new Node(300)
+
 // console.log(node1)
 myList.insert(node3)
 myList.insert(node2)
 myList.insert(node1)
+myList.insert(node4)
 // myList.insert(node3)
-console.log(myList.getKth(1))
+console.log(myList)
 
 module.exports = {
   Node,
