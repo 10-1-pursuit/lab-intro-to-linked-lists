@@ -35,14 +35,56 @@ class LinkedList {
     }
     return count;
   }
+
+  delete(dataProp) {
+    let currentNode = this.head;
+    if (currentNode.data == dataProp) {
+      this.head = currentNode.next;
+    } else if (currentNode.next.data === dataProp) {
+      console.log("Current Node: ", currentNode);
+      console.log("currentNode.next: ", currentNode.next);
+      console.log("currentNode.next.next: ", currentNode.next.next);
+      currentNode.next = currentNode.next.next;
+      console.log ("New list:", this);
+    }
+    currentNode = currentNode.next;
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    let currentNode = this.head;
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  search(dataProp) {
+    let currentNode = this.head;
+    while (currentNode) {
+      if(currentNode.data === dataProp) {
+        return currentNode
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+    return null
+  }
 }
 
 const list = new LinkedList()
 list.insert(node1)
 list.insert(node2)
 list.insert(node3)
-console.log(list.size())
-console.log(list)
+// list.delete(13)
+console.log(list.search(node1))
+// console.log(list.size())
+// console.log(list.getFirst())
+// console.log(list.getLast())
+// console.log(list)
 
 
 
