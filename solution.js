@@ -112,6 +112,17 @@ class LinkedList {
     }
     return currentNode
   }
+  search(dataProp) {
+    let currentNode = this.head
+    while (currentNode) {
+      if (currentNode.data === dataProp) {
+        return currentNode
+      } else {
+        let currentNode = currentNode.next
+      }
+      return null
+    }
+  }
 
 }
 
