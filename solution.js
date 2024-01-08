@@ -151,6 +151,34 @@ class LinkedList {
     }
     return current.value
   }
+  toArray() {
+    let arryOfData = []
+    let currentNode = this.head
+
+    while (currentNode) {
+      arryOfData.push(currentNode.data)
+      currentNode = currentNode.next
+    }
+    return arryOfData
+  }
+  containsDuplicates(dataProp) {
+    let prevNode = this.head
+    let currentNode = this?.head.next
+
+    while (currentNode) {
+      if (currentNode.data === dataProp) {
+        let currentNode = currentNode = currentNode.next
+        let prevNode = prevNode.next
+      }
+      if (currentNode.data === prevNode.data) {
+        return true
+      } else {
+        currentNode = currentNode.next
+        prevNode = prevNode.next
+      }
+    }
+    return false
+  }
 }
 
 
