@@ -73,10 +73,10 @@ class LinkedList {
       if (currentNode.data === dataProp) {
         return currentNode
       } else {
-        let currentNode = currentNode.next
+        currentNode = currentNode.next
       }
-      return null
     }
+    return null
   }
   getKth(k) {
     if (k > this.size()) return null
