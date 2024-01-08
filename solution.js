@@ -104,25 +104,22 @@ class LinkedList {
     return arryOfData
   }
   containsDuplicates(dataProp) {
-    let prevNode = this.head
-    let currentNode = this?.head.next
+    let currentNode = this.head
 
     while (currentNode) {
-      if (currentNode.data === dataProp) {
-        currentNode = currentNode.next
+      let prevNode = currentNode.next
+
+      while (prevNode) {
+        if (currentNode.data === prevNode.data || currentNode.data === dataProp) {
+          return true
+        }
         prevNode = prevNode.next
       }
-      if (currentNode.data === prevNode.data) {
-        return true
-      } else {
-        currentNode = currentNode.next
-        prevNode = prevNode.next
-      }
+      currentNode = currentNode.next
     }
     return false
   }
 }
-
 
 //Creating new nodes
 const node1 = new Node(1);
@@ -146,23 +143,6 @@ const node0 = new Node(0);
 const nodeWord9 = new Node("dog");
 
 console.log(node1)
-
-
-// //Linking the nodes the annoying way
-// node1.next = node2
-// node2.next = node3
-// node3.next = node4
-// node4.next = node5
-// node5.next = node6
-// node6.next = node7
-// node7.next = node8
-// node8.next = node9
-// node9.next = node0
-
-
-// console.log(nums)
-// console.log(words)
-
 
 
 
