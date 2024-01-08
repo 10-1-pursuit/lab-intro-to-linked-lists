@@ -125,19 +125,19 @@ class LinkedList {
   getKthToLast(k) {
     if (k > this.size()) return null;
 
-    let prevNum = this.head;
-    let currentNum = this.head;
+    let firstNum = this.head;
+    let secondNum = this.head;//These variables  will traverse the list with a specific offset (k steps).
 
     for (let i = 0; i < k; i++) {
-      prevNum = prevNum.next;
+      firstNum = firstNum.next;
     }
 
-    while (prevNum && prevNum.next) {
-      prevNum = prevNum.next;
-      currentNum = currentNum.next;
+    while (firstNum && firstNum.next) {
+      firstNum = firstNum.next;
+      secondNum = secondNum.next;
     }
 
-    return currentNum;
+    return secondNum;
   }
 
 }
