@@ -84,6 +84,29 @@ insert(node) {
     
     return null
   }
+  getKth(k){
+    if(k>this.size())return null
+    let count=1
+    var currentNode=this.head
+    while(k!== count){
+        count++
+        currentNode=currentNode.next
+    }
+    return currentNode
+
+
+
+
+ }
+ getKthToLast(k){
+  if(k>this.size()) return null
+  return this.getKth((this.size()-k))
+ }
+//  isEmpty(){
+//   return !this.head
+// }
+ 
+
   
   
   
@@ -102,7 +125,7 @@ myList.insert(node3)
 myList.insert(node2)
 myList.insert(node1)
 // myList.insert(node3)
-console.log(myList)
+console.log(myList.getKth(1))
 
 module.exports = {
   Node,
