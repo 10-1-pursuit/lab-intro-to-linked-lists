@@ -132,8 +132,24 @@ class LinkedList {
       counter++
     }
   }
-  getKthToLast() {
-
+  getKthToLast(head = this.head, k) {
+    if (head = null) {
+      return null
+    }
+    let currentNode = head
+    let runner = head
+    if (k < 0) return
+    for (let i = 0; i <= k; i++) {
+      if (runner === null) {
+        return null
+      }
+      runner = runner.next
+    }
+    while (runner !== null) {
+      current = current.next
+      runner = runner.next
+    }
+    return current.value
   }
 }
 
