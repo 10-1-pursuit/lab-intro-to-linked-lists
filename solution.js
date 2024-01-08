@@ -21,6 +21,7 @@ class LinkedList {
     }
   }
 }
+console.log(insert)
 
 module.exports = {
   Node,
