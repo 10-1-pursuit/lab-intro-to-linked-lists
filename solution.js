@@ -4,6 +4,7 @@ class Node {
   constructor(data) {
     this.data = data;
     this.next = null;
+    this.tail = null
   }
 }
 
@@ -14,18 +15,19 @@ class LinkedList {
 
   insert(data) {
     let currentNode = this.head;
-    const insertNewNode = new Node(data)
+    const newNode = new Node(data)
 
-    if (this.head !== currentNode) {
-      insertNewNode.next = currentNode
+    if (currentNode !== null) {
+      newNode.next = currentNode
+      this.head = newNode
     } else {
-      this.head = insertNewNode
+      this.head = newNode;
     }
   }
-  size(data) {
+  size() {
     let count = 0
     let currentNode = this.head
-    while (data) {
+    while (currentNode) {
       count++
       currentNode = currentNode.next
     }
@@ -77,32 +79,19 @@ class LinkedList {
     }
   }
   getKth(k) {
-    if (k > this.size) return null
+    if (k > this.size()) return null
     let counter = 1
 
     let currentNode = this.head
     while (k !== counter) {
       counter++
+      currentNode = currentNode?.next
     }
+    return currentNode
   }
-  getKthToLast(head = this.head, k) {
-    if (head = null) {
-      return null
-    }
-    let currentNode = head
-    let runner = head
-    if (k < 0) return
-    for (let i = 0; i <= k; i++) {
-      if (runner === null) {
-        return null
-      }
-      runner = runner.next
-    }
-    while (runner !== null) {
-      current = current.next
-      runner = runner.next
-    }
-    return current.value
+  getKthToLast(k) {
+    if (k > this.size()) return null
+    return this.getKth(this.size() - k)
   }
   toArray() {
     let arryOfData = []
@@ -120,8 +109,8 @@ class LinkedList {
 
     while (currentNode) {
       if (currentNode.data === dataProp) {
-        let currentNode = currentNode = currentNode.next
-        let prevNode = prevNode.next
+        currentNode = currentNode.next
+        prevNode = prevNode.next
       }
       if (currentNode.data === prevNode.data) {
         return true
@@ -157,6 +146,7 @@ const node0 = new Node(0);
 const nodeWord9 = new Node("dog");
 
 console.log(node1)
+
 
 // //Linking the nodes the annoying way
 // node1.next = node2
@@ -200,6 +190,7 @@ newList.insert(node9)
 newList.insert(node0)
 
 console.log(newList)
+console.log("This is Kth", newList.getKth(2))
 
 module.exports = {
   Node,
