@@ -31,6 +31,31 @@ class LinkedList {
     return count;
   }
 
+  delete(key) {
+    if (!this.head) {
+      return;
+    }
+
+    if (this.head.data === key) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let current = this.head;
+    let prev = null;
+
+    while (current && current.data !== key) {
+      prev = current;
+      current = current.next;
+    }
+
+    if (!current) {
+      return; // Key not found
+    }
+
+    prev.next = current.next;
+  }
+
 }
 
 module.exports = {
