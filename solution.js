@@ -123,7 +123,18 @@ class LinkedList {
       return null
     }
   }
+  getKth(k) {
+    if (k > this.size) return null
+    let counter = 1
 
+    let currentNode = this.head
+    while (k !== counter) {
+      counter++
+    }
+  }
+  getKthToLast() {
+
+  }
 }
 
 
