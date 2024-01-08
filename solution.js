@@ -85,6 +85,39 @@ class LinkedList {
     return currentNode;
   }
 
+    toArray(dataProp){
+        // Initialize an empty arr
+        let dataToArray = [];
+        // Iterate through all the nodes, and push the data from each node to the array
+        for (let data of dataProp) {
+          dataToArray.push(data);
+        }
+        // return array
+        return dataToArray
+    }  
+
+
+  getKthToLast(k) {
+    // call size for full length of list
+    const size = this.size()
+    // minus size and k to calculate the kth element from the end
+    const kthIndex = size - k;
+    // check for null
+    if (kthIndex <=0 || kthIndex > size) {
+      return null;
+    }
+    // make counter to increment
+    let counter = 1;
+    // and make sure to go to the next node
+    let currentNode = this.head;
+    // once it keeps going to until the k matches
+    while (counter < kthIndex) {
+      counter++;
+      currentNode = currentNode.next
+    }
+    return currentNode
+  }
+
   isEmpty() {
     return !this.head;
   }
