@@ -12,30 +12,28 @@ class LinkedList {
     this.head = head
   }
 
-  insert(node) {
+  insert(data) {
     let currentNode = this.head;
-    if (!currentNode) {
-      currentNode = node
-    } else if (currentNode.next) {
-      while (currentNode.next) {
-        currentNode = currentNode.next
-      }
-      currentNode.next = node
+    const insertNewNode = new Node(data)
+
+    if (this.head !== currentNode) {
+      insertNewNode.next = currentNode
     } else {
-      currentNode.next = node
+      this.head = insertNewNode
     }
   }
-  size(node) {
+  size(data) {
     let count = 0
     let currentNode = this.head
-    while (node) {
+    while (data) {
       count++
       currentNode = currentNode.next
     }
     return count
   }
+
   isEmpty() {
-    return this.head
+    return this.head === null
   }
   clear() {
     this.head = null
