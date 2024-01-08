@@ -171,6 +171,10 @@ newList.insert(node0)
 
 console.log(newList)
 console.log("This is Kth", newList.getKth(2))
+console.log("This is the KthToLast", newList.getKthToLast(2))
+console.log("Is the node empty?", newList.isEmpty())
+
+
 
 module.exports = {
   Node,
