@@ -42,6 +42,21 @@ class LinkedList {
       currentNode.next = node;
     }
   }
+
+  size(){
+    // Initialize a variable to keep count, set it to 0
+    let count = 0;
+    // Initialize a  currentNode to hold the node we are looking at, as the head
+    let currentNode = this.head
+    // While currentNode is truthy incriment the count by 1 and reassign currentNode to be the next node
+    while (currentNode) {
+      count++
+      currentNode = currentNode.next
+    }
+    // return the count variable
+    return count
+  }
+
 }
 
 const list = new LinkedList();
@@ -51,6 +66,7 @@ list.insert(secondNode)
 list.insert(thirdNode)
 
 console.log(list);
+console.log(list.size());
 
 
 module.exports = {
