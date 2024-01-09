@@ -7,9 +7,9 @@ class Node {
   }
 }
 
-const firstNode = new Node(3);
-const secondNode = new Node(6);
-const thirdNode = new Node(9);
+const newNode = new Node(3);
+const newNode2 = new Node(6);
+const newNode3 = new Node(9);
 
 // console.log(firstNode)
 
@@ -43,31 +43,37 @@ class LinkedList {
     }
   }
 
-  size(){
+  size() {
     // Initialize a variable to keep count, set it to 0
     let count = 0;
     // Initialize a  currentNode to hold the node we are looking at, as the head
-    let currentNode = this.head
+    let currentNode = this.head;
     // While currentNode is truthy incriment the count by 1 and reassign currentNode to be the next node
     while (currentNode) {
-      count++
-      currentNode = currentNode.next
+      count++;
+      currentNode = currentNode.next;
     }
     // return the count variable
-    return count
+    return count;
   }
 
+  clear() {
+    // If we assign the head to null then the list becomes empty
+    this.head = null;
+  }
 }
 
-const list = new LinkedList();
+const newList = new LinkedList();
 
-list.insert(firstNode)
-list.insert(secondNode)
-list.insert(thirdNode)
+newList.insert(newNode);
+newList.insert(newNode2);
+newList.insert(newNode3);
 
-console.log(list);
-console.log(list.size());
+// console.log(newList);
+// console.log(newList.size());
+// newList.clear();
 
+console.log(newList);
 
 module.exports = {
   Node,
