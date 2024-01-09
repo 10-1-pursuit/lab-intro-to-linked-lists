@@ -61,11 +61,16 @@ class LinkedList {
     // If we assign the head to null then the list becomes empty
     this.head = null;
   }
+
+  getFirst() {
+    // The head is always the first in the list so we can just return the head
+    return this.head;
+  }
 }
 
 const newList = new LinkedList();
 
-newList.insert(newNode);
+// newList.insert(newNode);
 newList.insert(newNode2);
 newList.insert(newNode3);
 
@@ -73,7 +78,7 @@ newList.insert(newNode3);
 // console.log(newList.size());
 // newList.clear();
 
-console.log(newList);
+console.log(newList.getFirst());
 
 module.exports = {
   Node,
