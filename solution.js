@@ -66,11 +66,21 @@ class LinkedList {
     // The head is always the first in the list so we can just return the head
     return this.head;
   }
+
+  getLast() {
+    // Initialize a currentNode variable to keep track of the current head node value
+    let currentNode = this.head;
+    //While there is a node after the head(or while next is not null), reassign the currentNode(which is the current head) to currentNode.next
+    while (currentNode.next) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
 }
 
 const newList = new LinkedList();
 
-// newList.insert(newNode);
+newList.insert(newNode);
 newList.insert(newNode2);
 newList.insert(newNode3);
 
@@ -78,7 +88,8 @@ newList.insert(newNode3);
 // console.log(newList.size());
 // newList.clear();
 
-console.log(newList.getFirst());
+// console.log(newList.getFirst());
+console.log(newList.getLast());
 
 module.exports = {
   Node,
